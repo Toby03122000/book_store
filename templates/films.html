@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<h1>Films</h1>
+
+<p>Here are all of the current films we have in our collection:</p>
+
+<div class="film-grid">
+    {% for film in films %}
+    <div class="film-card">
+        <img src="https://picsum.photos/seed/{{ film.id }}/200/300" alt="" class="film-thumbnail" <h3>{{ film.title }}
+        </h3>
+        <p>Released: {{ film.release_year }}</p>
+    </div>
+    {% endfor %}
+</div>
