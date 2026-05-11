@@ -15,8 +15,8 @@ has text
 """
 def test_films_has_text(page: Page):
     page.goto("http://127.0.0.1:5001/films")
-    p = page.locator("p")
-    expect(p).to_have_text("Here are all of the current films we have in our collection:")
+    p1 = page.locator("p1")
+    expect(p1).to_have_text("Below are all of the current films we have in our collection:")
 
 """
 route /films
@@ -24,12 +24,12 @@ has list of all films
 """
 def test_films_lists_all_films(page: Page):
     page.goto("http://127.0.0.1:5001/films")
-    films = page.locator("li")
-    expected_films = [
-        "Film(1, Spider-Man, 2002)",
-        "Film(2, Project Hail Mary, 2026)",
-        "Film(3, Hot Fuzz, 2007)",
-        "Film(4, Ex Machina, 2014)",
+    # film_cards = page.locator(".film_card")
+    actual_titles = page.locator(".film-card h3").all_inner_texts()
+    expected_titles = [
+        "Star Wars: Episode V - The Empire Strikes Back",
+        "The Lord of the Rings: The Fellowship of the Ring",
+        "Pirates of the Caribbean: Dead Man's Chest",
+        "Avengers: Endgame",
     ]
-    actual_films = films.all_inner_texts()
-    assert actual_films == expected_films
+    assert actual_titles == expected_titles

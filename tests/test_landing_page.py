@@ -8,4 +8,4 @@ def test_has_title(page: Page):
 
     h1 = page.locator("h1")
 
-    expect(h1).to_have_text("Hello and welcome to Toby's Terrific Tales!")
+    expect(h1).to_have_text("Toby's Terrific Tales (TTT)")
