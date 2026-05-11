@@ -9,7 +9,7 @@ class BookRepository:
         rows = self._connection.execute('SELECT * from books')
         books = []
         for row in rows:
-            item = Book(row["id"], row["title"], row["author"])
+            item = Book(row["id"], row["title"], row["author"], row["image_url"])
             books.append(item)
         return books
 

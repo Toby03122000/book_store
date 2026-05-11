@@ -9,7 +9,7 @@ class FilmRepository:
         rows = self._connection.execute('SELECT * from films')
         films = []
         for row in rows:
-            item = Film(row["id"], row["title"], row["release_year"])
+            item = Film(row["id"], row["title"], row["release_year"], row["image_url"])
             films.append(item)
         return films
 

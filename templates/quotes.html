@@ -1,9 +1,17 @@
 <h1>Quotes</h1>
 
+<h2>Book</h2>
 <p>Famous quotes on the power of reading:</p>
-
 <ul>
-    {% for quote in quotes %}
+    {% for quote in book_quotes %}
+    <li>{{ quote }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Film</h2>
+<p>Famous quotes on the nature of cinema:</p>
+<ul>
+    {% for quote in film_quotes %}
     <li>{{ quote }}</li>
     {% endfor %}
 </ul>
