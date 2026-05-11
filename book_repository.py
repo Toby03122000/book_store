@@ -12,6 +12,11 @@ class BookRepository:
             item = Book(row["id"], row["title"], row["author"], row["image_url"])
             books.append(item)
         return books
+    
+    def create(self, book):
+        self._connection.execute('INSERT INTO books (title, author, image_url) VALUES (%s, %s, %s)', [
+                                book.title, book.author, book.image_url])
+        return None
 
     # Find a single book by their id
     # def find(self, book_id):
@@ -19,13 +24,6 @@ class BookRepository:
     #         'SELECT * from books WHERE id = %s', [book_id])
     #     row = rows[0]
     #     return Book(row["id"], row["title"], row["author"])
-
-    # Create a new book
-    # Do you want to get its id back? Look into RETURNING id;
-    # def create(self, book):
-    #     self._connection.execute('INSERT INTO books (title, author) VALUES (%s, %s)', [
-    #                             book.title, book.author])
-    #     return None
 
     # Delete an book by their id
     # def delete(self, book_id):

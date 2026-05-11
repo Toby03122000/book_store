@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from database_connection import DatabaseConnection
 from book_repository import BookRepository
+from book import Book
 from film_repository import FilmRepository
+from film import Film
 
 app = Flask(__name__)
 
@@ -85,6 +87,26 @@ def authors():
     "dob": "1979-11-11"
     }
 ]
+
+@app.route('/books', methods=['POST'])
+def create_book():
+    connection = DatabaseConnection()
+    connection.connect()
+    book_repository = BookRepository(connection)
+    book_details = request.form
+    book = Book(id=None, title=book_details["title"], author=book_details["author"], image_url=book_details["image_url"])
+    book_repository.create(book)
+    return redirect("/books")
+
+@app.route('/films', methods=['POST'])
+def create_film():
+    connection = DatabaseConnection()
+    connection.connect()
+    film_repository = FilmRepository(connection)
+    film_details = request.form
+    film = Film(id=None, title=film_details["title"], release_year=film_details["release_year"], image_url=film_details["image_url"])
+    film_repository.create(film)
+    return redirect("/films")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)

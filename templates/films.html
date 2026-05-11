@@ -2,7 +2,15 @@
 
 <h1>Films</h1>
 
-<p1>Below are all of the current films we have in our collection:</p1>
+<p1>Here are all of the current films we have in our collection!</p1>
+<p>If you wish to add one, please use the form below:</p>
+
+<form  method="POST" action="/films">
+    <input type="text" name="title" placeholder="Title"><br>
+    <input type="text" name="release_year" placeholder="Release Year"><br>
+    <input type="text" name="image_url" placeholder="Image url"><br>
+    <input type="submit" value="Submit">
+</form>
 
 <div class="film-grid">
     {% for film in films %}

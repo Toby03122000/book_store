@@ -16,7 +16,7 @@ has text
 def test_books_has_text(page: Page):
     page.goto("http://127.0.0.1:5001/books")
     p1 = page.locator("p1")
-    expect(p1).to_have_text("Below are all of the current books we have in our collection:")
+    expect(p1).to_have_text("Here are all of the current books we have in our collection!")
 
 """
 route /books
@@ -30,6 +30,7 @@ def test_books_lists_all_books(page: Page):
         "The Hitchhiker's Guide to the Galaxy",
         "The Hunger Games",
         "Sapiens: A Brief History of Humankind",
-        "The Satsuma Complex"
+        "The Satsuma Complex",
+        "Project Hail Mary"
     ]
     assert actual_titles == expected_titles

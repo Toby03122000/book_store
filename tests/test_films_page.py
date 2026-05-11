@@ -16,7 +16,7 @@ has text
 def test_films_has_text(page: Page):
     page.goto("http://127.0.0.1:5001/films")
     p1 = page.locator("p1")
-    expect(p1).to_have_text("Below are all of the current films we have in our collection:")
+    expect(p1).to_have_text("Here are all of the current films we have in our collection!")
 
 """
 route /films
@@ -31,5 +31,6 @@ def test_films_lists_all_films(page: Page):
         "The Lord of the Rings: The Fellowship of the Ring",
         "Pirates of the Caribbean: Dead Man's Chest",
         "Avengers: Endgame",
+        "Project Hail Mary"
     ]
     assert actual_titles == expected_titles
