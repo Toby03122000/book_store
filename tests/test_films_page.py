@@ -2,7 +2,7 @@ from playwright.sync_api import Page, expect
 from database_connection import DatabaseConnection
 
 """
-test /films
+route /films
 has title "Films"
 """
 def test_has_title(page: Page):
@@ -45,7 +45,7 @@ def test_films_lists_all_films(page: Page):
 
 """
 route /films
-has list of all release
+has list of all release years
 """
 def test_films_lists_all_release_years(page: Page):
     connection = DatabaseConnection()
