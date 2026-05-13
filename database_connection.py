@@ -4,7 +4,7 @@ import os
 
 class DatabaseConnection:
 
-    DATABASE_NAME = "book_store"
+    DATABASE_NAME = os.getenv("DATABASE_NAME", "book_store_test")
 
     def __init__(self):
         self.connection = None

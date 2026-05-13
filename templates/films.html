@@ -5,7 +5,7 @@
 <p1>Here are all of the current films we have in our collection!</p1>
 <p>If you wish to add one, please use the form below:</p>
 
-<form  method="POST" action="/films">
+<form method="POST" action="/films">
     <input type="text" name="title" placeholder="Title"><br>
     <input type="text" name="release_year" placeholder="Release Year"><br>
     <input type="text" name="image_url" placeholder="Image url"><br>
@@ -17,7 +17,7 @@
     <div class="film-card">
         <img src="{{ film.image_url }}" alt="{{ film.title }}" class="film-thumbnail">
         <h3>{{ film.title }}</h3>
-        <p>Released: {{ film.release_year }}</p>
+        <p id="release-year-list">Released: {{ film.release_year }}</p>
     </div>
     {% endfor %}
 </div>

@@ -5,7 +5,7 @@
 <p1>Here are all of the current books we have in our collection!</p1>
 <p>If you wish to add one, please use the form below:</p>
 
-<form  method="POST" action="/books">
+<form method="POST" action="/books">
     <input type="text" name="title" placeholder="Title"><br>
     <input type="text" name="author" placeholder="Author"><br>
     <input type="text" name="image_url" placeholder="Image url"><br>
@@ -17,7 +17,7 @@
     <div class="book-card">
         <img src="{{ book.image_url }}" alt="{{ book.title }}" class="book-thumbnail">
         <h3>{{ book.title }}</h3>
-        <p>Author: {{ book.author }}</p>
+        <p id="author-list">Author: {{ book.author }}</p>
     </div>
     {% endfor %}
 </div>

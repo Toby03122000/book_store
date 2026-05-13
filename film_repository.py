@@ -15,7 +15,7 @@ class FilmRepository:
 
     def create(self, film):
         self._connection.execute('INSERT INTO films (title, release_year, image_url) VALUES (%s, %s, %s)', [
-                                film.title, film.release_year, film.image_url])
+            film.title, film.release_year, film.image_url])
         return None
 
     # Find a single film by their id

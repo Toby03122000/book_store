@@ -15,7 +15,7 @@ class BookRepository:
     
     def create(self, book):
         self._connection.execute('INSERT INTO books (title, author, image_url) VALUES (%s, %s, %s)', [
-                                book.title, book.author, book.image_url])
+            book.title, book.author, book.image_url])
         return None
 
     # Find a single book by their id
