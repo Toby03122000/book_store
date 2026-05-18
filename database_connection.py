@@ -15,7 +15,17 @@ class DatabaseConnection:
             self.connection = psycopg.connect(
                 f"postgresql://{self.DATABASE_HOST}/{self.DATABASE_NAME}",
                 row_factory=dict_row)
-        except psycopg.OperationalError:
+        except psycopg.OperationalError as e:
+            diag = e.diag
+            print(f"Severity: {diag.severity}")
+            print(f"SQLSTATE Code: {diag.sqlstate}")
+            print(f"Message Primary: {diag.message_primary}")
+    
+            # These might be None depending on the error
+            if diag.message_detail:
+                print(f"Detail: {diag.message_detail}")
+            if diag.message_hint:
+                print(f"Hint: {diag.message_hint}")
             raise Exception(f"Couldn't connect to the database {self.DATABASE_NAME}! " \
                     f"Did you create it using `createdb {self.DATABASE_NAME}`?")
     

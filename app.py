@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect
 from database_connection import DatabaseConnection
-from book_repository import BookRepository
 from book import Book
-from film_repository import FilmRepository
+from book_repository import BookRepository
 from film import Film
+from film_repository import FilmRepository
+from user import User
+from user_repository import UserRepository
 
 app = Flask(__name__)
 
@@ -65,6 +67,20 @@ def add_new_film():
     film = Film(id=None, title=film_details["title"], release_year=film_details["release_year"], image_url=film_details["image_url"])
     film_repository.create(film)
     return redirect("/films")
+
+@app.route('/users/new', methods=['GET'])
+def get_signup_form():
+    return render_template("signup_form.html")
+
+@app.route('/users/new', methods=['POST'])
+def add_new_user():
+    connection = DatabaseConnection()
+    connection.connect()
+    user_repository = UserRepository(connection)
+    user_details = request.form
+    user = User(id=None, username=user_details["username"], password=user_details["password"])
+    user_repository.create(user)
+    return redirect("/")
 
 @app.route('/book_list', methods=['GET'])
 def get_book_list():
